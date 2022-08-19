@@ -1,0 +1,44 @@
+.projects {
+    height: inherit;
+    position: relative;
+
+    .loader-blue-gif {
+        position: absolute;
+        top: calc(50% - 25px);
+        left: calc(50% - 25px);
+    }
+}
+.projects-list {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 110px);
+    grid-template-rows: repeat(3, 180px);
+    grid-gap: 5px;
+
+    a {
+        display: block;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+
+        &:hover {
+            background-color: rgba(74, 85, 104, 0.39);
+        }
+    }
+}
+
+.projects-list-item {
+
+    i {
+        font-size: 80px;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    p {
+        font-size: 14px;
+        color: white;
+    }
+
+
+}

@@ -1,0 +1,329 @@
+
+$kbt-background-color: #1e90ff;
+$kbt-sw-background-color: #70a1ff;
+
+$kbt-themeColor: #1e90ff;
+
+$kbt-darkText: #2f3542;
+$kbt-darkText-soft: #57606f;
+
+$kbt-lightText: #f1f2f6;
+
+
+$kbt-header-color: #2f3542;
+$kbt-header-back-color: #ced6e0;
+
+.kbt-app {
+    position: relative;
+    margin: 10px auto;
+    max-width: 750px;
+    min-height: 355px;
+    border-radius: 20px;
+}
+
+.kbt-app-header{
+    padding: 0 10px;
+    color: $kbt-header-color;
+    position: relative;
+    z-index: 99;
+    height: 40px;
+    background-color: $kbt-header-back-color;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    i{
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    button {
+        height: 40px;
+        line-height: 40px;
+        color: $kbt-header-color;
+        border: none;
+        background: none;
+        outline: none;
+        font-size: 20px;
+
+        &:disabled, &[disabled]{
+            color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.kbt-app-content {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    color: $kbt-lightText;
+    background-color: $kbt-background-color;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+}
+
+.kbt-app-main{
+    position: relative;
+    padding: 10px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 60px;
+    gap: 10px 10px;
+}
+
+.kbt-content-result{
+    position: absolute;
+    top: 40px;
+    width: 100%;
+
+    h3{
+        text-align: center;
+    }
+}
+
+.kbt-welcome {
+    position: absolute;
+    background-color: $kbt-themeColor;
+    top: 40px;
+    width: 100%;
+    height: 100%;
+
+    padding: 60px;
+    border-radius: 10px;
+
+    h2{
+        text-align: center;
+    }
+}
+.kbt-game-options{
+
+    button {
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        padding: 0 10px;
+
+        height: 40px;
+        min-width: 80px;
+
+        &:not(:first-child){
+            margin-left: 20px;
+        }
+    }
+}
+
+
+.kbt-content-active-block{
+    background-color: $kbt-lightText;
+    position: relative;
+    color: $kbt-darkText;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 280px;
+}
+
+.kbt-screen-words {
+
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 177px);
+    grid-template-rows: repeat(3, 90px);
+}
+
+.kbt-countdown-block{
+    position: relative;
+
+    div {
+        position: absolute;
+        width: 100%;
+        top: 113px;
+
+        h5 {
+            text-align: center;
+            font-size: 40px;
+        }
+    }
+}
+
+.kbt-countdown-block-start-btn{
+    position: absolute;
+    top: 117px;
+    left: calc(50% - 100px);
+    border: none;
+    border-radius: 20px;
+    background-color: $kbt-themeColor;
+
+    height: 40px;
+    width: 200px;
+    color: $kbt-lightText;
+
+}
+
+.kbt-needed-item{
+    position: relative;
+    width: 200px;
+}
+
+.kbt-needed-word{
+    background-color: $kbt-lightText;
+
+    text-align: center;
+    font-family: "Roboto", Arial, sans-serif;
+    color: #656D78;
+    position: relative;
+    top: 0;
+
+    span {
+        width: 100%;
+    }
+
+    p {
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+
+        height: 43px;
+        max-width: 174px;
+        font-size: 20px;
+        line-height: 43px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+.kbt-needed-word div {
+  //***
+}
+
+.kbt-word-block {
+    position: absolute;
+    top: 22px;
+    width: 100%;
+}
+.kbt-needed-word .kbt-needed-word-value {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.kbt-needed-word i{
+    position: absolute;
+    top: 0;
+    height: 43px;
+    left: calc(50% - 9px);
+    text-align: center;
+    line-height: 43px;
+    opacity: 0;
+    font-size: 21px;
+}
+.kbt-score-block {
+    color: $kbt-lightText;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    background-color: $kbt-sw-background-color;
+    border-radius: 10px;
+    min-height: 280px;
+
+    h3{
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+.kbt-score-block-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    button{
+        color: $kbt-lightText;
+        bottom: 10px;
+        left: calc(50% - 45px);
+        position: absolute;
+        width: 90px;
+        background-color: $kbt-themeColor;
+        border: none;
+        height: 40px;
+        border-radius: 20px;
+
+        &:disabled, &[disabled]{
+            color: #f1f2f6;
+            background-color: #ced6e0;
+        }
+    }
+}
+
+.kbt-score {
+    p{
+        font-size: 35px;
+        text-align: center;
+    };
+}
+.kbt-timer {
+    div {
+        display: flex;
+        justify-content: center;
+    }
+
+    p{
+        text-align: center;
+        font-size: 30px;
+        width: 60px;
+    }
+
+    span{
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+    }
+}
+
+.kbt-input-area {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.kbt-input-block {
+    position: relative;
+}
+
+.kbt-input{
+    display: block;
+    color: $kbt-lightText;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background: none;
+    border-bottom: 1px solid $kbt-lightText;
+    border-radius: 10px;
+    outline: none;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 50px;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    &::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+    &::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+    &:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+    &:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+    &:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+}

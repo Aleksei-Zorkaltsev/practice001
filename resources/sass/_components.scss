@@ -1,0 +1,9 @@
+.loader-blue-gif {
+    height: 50px;
+}
+.router-link-exact-active {
+    color: $themeColor !important;
+}
+.router-link-exact-active:hover {
+    text-shadow: 0 5px 10px $themeColor !important;
+}

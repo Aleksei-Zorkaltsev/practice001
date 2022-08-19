@@ -1,0 +1,143 @@
+
+
+.pass-gen-app{
+    position: relative;
+    margin: 20px;
+    background-color: #f1f2f6;
+    width: 360px;
+    padding: 20px;
+    color: #57606f;
+    border-radius: 7px;
+    font-family: 'Comfortaa', cursive;
+}
+.pass-gen-header{
+
+    button {
+        position: absolute;
+        top: 18px;
+        right: 25px;
+        border: none;
+        background: none;
+        color: #ff6b81;
+        font-size: 20px;
+    }
+
+    h3 {
+        margin: 0;
+    }
+}
+
+.pass-gen-options{
+
+    p{
+        margin: 0;
+        padding: 0;
+    }
+
+    input {
+        margin: 10px 0;
+
+        &[type=range]  {
+            width: 100%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        &[type=range]::-webkit-slider-runnable-track {
+            border-radius: 10px/100%;
+            height: 7px;
+            border: 1px solid #ced6e0;
+            background-color: #fff;
+        }
+
+        &[type=range]::-webkit-slider-thumb {
+            background: #ff6b81;
+            border: 1px solid #ff4757;
+            border-radius: 15px/100%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -4px;
+        }
+    }
+}
+
+.pass-gen-app-result-title{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    h3{
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        border: none;
+        background: none;
+
+        i {
+            color: #ff6b81;
+            margin-right: 7px;
+        }
+    }
+}
+
+.pass-gen-app-result{
+    display: flex;
+    height: 40px;
+    border: 1px solid #ced6e0;
+    border-radius: 7px;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    p{
+        margin: 0;
+        padding: 0 10px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    button {
+        background: none;
+        background-color: #f1f2f6;
+        outline: none;
+        border: none;
+        border-left: 1px solid #ced6e0;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        width: 40px;
+        height: 38px;
+        position: relative;
+
+        i {
+            color: #ff6b81;
+            font-size: 20px;
+            line-height: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+#pass-gen-copy-alert {
+    position: absolute;
+    background-color: rgba(47, 53, 66, 0.5);
+    width: 40px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    color: #f1f2f6;
+    top: -5px;
+    right: 0;
+    opacity: 0;
+    border-radius: 3px;
+}
+#pass-gen-copy-check {
+    opacity: 0;
+}

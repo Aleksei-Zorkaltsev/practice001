@@ -1,0 +1,13 @@
+.app-content{
+    height: 700px;
+    box-sizing: border-box;
+    border: 2px solid #293138;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+    background-color: rgba(47, 54, 64, 0.5);
+
+    h2{
+        line-height: initial;
+    }
+}

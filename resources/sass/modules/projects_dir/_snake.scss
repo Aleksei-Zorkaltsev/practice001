@@ -1,0 +1,58 @@
+#snake_app {
+    width: 382px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f1efef;
+    border: 1px solid #bbbbbb;
+    color: #292b2f;
+}
+
+.snake_actions {
+    height: 80px;
+
+    p {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        margin: 0;
+    }
+
+    button {
+        height: 30px;
+        color: #292b2f;
+        outline: none;
+        border: 1px solid #bbbbbb;
+        background-color: white;
+        border-radius: 5px;
+        padding: 0 10px;
+        line-height: 30px;
+
+        &:disabled, &[disabled] {
+            color: #bbbbbb;
+            background-color: #f1f1f1;
+        }
+    }
+}
+.snake_speed_options {
+    margin: 5px;
+}
+#snake_field {
+
+    border: 1px solid #bbbbbb;
+
+    .snake-field {
+        height: 30px;
+        width: 30px;
+        background-color: white;
+    }
+}
+.snake-field-snake-body {
+    background-color: #0d6efd !important;
+}
+.snake-field-food {
+    background-color: #d3604c !important;
+}
+.snake_speed_active {
+    background-color: #1e90ff !important;
+    color: white !important;
+}

@@ -1,0 +1,49 @@
+// Variables & Fonts
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Modules
+
+@import "components";
+@import "appwindow";
+@import "appContent";
+@import "transitions";
+
+@import "modules/homepage";
+@import "modules/projects";
+@import "modules/aboutme";
+@import "modules/contacts";
+
+//projects
+@import "modules/projects_dir/stopwatch";
+@import "modules/projects_dir/kb_trainer";
+@import "modules/projects_dir/pass_generator";
+@import "modules/projects_dir/memory_game";
+@import "modules/projects_dir/tester";
+@import "modules/projects_dir/todoapp";
+@import "modules/projects_dir/snake";
+html, body {
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    color: white;
+}
+
+body{
+    background: $backgroundImage no-repeat;
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+}
+
+.todo {
+    color: #388300
+}
+
+
+
+

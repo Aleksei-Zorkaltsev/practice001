@@ -1,0 +1,74 @@
+.fade-leave-active, .fade-enter-active {
+    transition: all 0.3s;
+}
+.fade-leave-to {
+    transform: scale(0.98);
+    opacity: 0;
+}
+.fade-enter {
+    transform: scale(0.98);
+    opacity: 0;
+}
+.fade-enter-to {
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+.fade-opacity-leave-active, .fade-enter-active {
+    transition: all 0.3s;
+}
+.fade-opacity-leave-to {
+    opacity: 0;
+}
+.fade-opacity-enter {
+    opacity: 0;
+}
+.fade-opacity-enter-to {
+    opacity: 1;
+}
+
+// ---------------------------------------- swaps for slider
+
+// swap left
+.swap-left-leave-active, .swap-left-enter-active  {
+    transition: all 0.5s;
+}
+.swap-left-leave{
+    position: absolute;
+    left: 0;
+}
+.swap-left-leave-to {
+    position: absolute;
+    left: -100%;
+}
+.swap-left-enter {
+    position: absolute;
+    left: 100%;
+ }
+.swap-left-enter-to {
+    position: absolute;
+    left: 0;
+}
+
+//swap right
+.swap-right-leave-active, .swap-right-enter-active  {
+    transition: all 0.5s;
+}
+.swap-right-leave{
+    position: absolute;
+    left: 0;
+}
+.swap-right-leave-to {
+    position: absolute;
+    left: 100%;
+}
+.swap-right-enter {
+    position: absolute;
+    left: -100%;
+}
+.swap-right-enter-to {
+    position: absolute;
+    left: 0;
+}
+
