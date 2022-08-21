@@ -3,7 +3,7 @@
         <div class="home-left">
             <h3>Привет, меня зовут Алексей</h3>
             <p>я junior front-end разработчик.</p>
-            <a href="#"> > Мои проекты</a>
+            <router-link to="/projects"> Мои проекты </router-link>
         </div>
         <div class="home-right">
 

@@ -14,5 +14,4 @@ export default {
     timer_seconds: null,
     timer_minutes: null,
     countQuestion: 0,
-    show_time_off: false,
 }

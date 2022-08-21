@@ -267,6 +267,7 @@
 
 .tester-test-current-question{
     position: relative;
+    box-shadow: 0 0 10px -5px #a4b0be;
 }
 
 .tester-test-end{
@@ -337,14 +338,16 @@
     max-width: 470px;
     border-radius: 5px;
     margin-bottom: 10px;
+    box-shadow: 0 0 10px -5px #a4b0be;
 
     textarea {
         outline: none;
-        border: none;
+        border: 1px solid #dcdde1;
         border-radius: 5px;
         padding: 5px;
         min-height: 50px;
         width: 100%;
+        margin: 5px 0;
     }
 }
 
@@ -360,19 +363,58 @@
     width: 328px;
     padding: 5px 10px;
     border-left: 1px solid #dcdde1;
+    z-index: 5;
 
-    h5 {
-        margin: 10px 0;
+    div {
+        position: relative;
+
+        i{
+            color: #a4b0be;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        span {
+            display: block;
+            top: 5px;
+            right: 20px;
+            position: absolute;
+            z-index: 99;
+            width: 220px;
+            background-color: #f1f2f6;
+            padding: 5px 10px;
+            font-size: 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 5px;
+            box-shadow: 0 0 10px -5px black;
+        }
+
+        h3 {
+            font-size: 15px;
+            margin: 10px 0;
+        }
+
+    }
+
+    hr{
+        margin: 0;
     }
 
     input, textarea {
         border-radius: 5px;
+        margin-bottom: 5px;
         width: 100%;
         padding: 0 5px;
         border: 1px solid #dcdde1;
         outline: none;
     }
 }
+
+.tester-create-tooltip-title {
+
+}
+
 .tester-create-question-btn, .tester-create-new-test-btn {
     outline: none;
     border-radius: 5px;
@@ -381,7 +423,15 @@
     padding: 5px 10px;
     color: white;
 }
+
 .tester-create-new-test-btn {
-    margin-top: 10px;
+    margin-top: 5px;
     width: 100%;
 }
+
+.tester-create-main-info-warning{
+    margin: 0;
+    color: #ff4757;
+    font-size: 12px;
+}
+

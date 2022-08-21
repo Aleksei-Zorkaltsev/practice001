@@ -11761,6 +11761,7 @@ textarea.form-control-lg {
 
 .tester-test-current-question {
   position: relative;
+  box-shadow: 0 0 10px -5px #a4b0be;
 }
 
 .tester-test-end {
@@ -11830,14 +11831,16 @@ textarea.form-control-lg {
   max-width: 470px;
   border-radius: 5px;
   margin-bottom: 10px;
+  box-shadow: 0 0 10px -5px #a4b0be;
 }
 .tester-create-question textarea {
   outline: none;
-  border: none;
+  border: 1px solid #dcdde1;
   border-radius: 5px;
   padding: 5px;
   min-height: 50px;
   width: 100%;
+  margin: 5px 0;
 }
 
 .tester-create-test-answers-block {
@@ -11853,12 +11856,41 @@ textarea.form-control-lg {
   width: 328px;
   padding: 5px 10px;
   border-left: 1px solid #dcdde1;
+  z-index: 5;
 }
-.tester-create-main-info h5, .tester-create-main-info .h5 {
+.tester-create-main-info div {
+  position: relative;
+}
+.tester-create-main-info div i {
+  color: #a4b0be;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tester-create-main-info div span {
+  display: block;
+  top: 5px;
+  right: 20px;
+  position: absolute;
+  z-index: 99;
+  width: 220px;
+  background-color: #f1f2f6;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -5px black;
+}
+.tester-create-main-info div h3, .tester-create-main-info div .h3 {
+  font-size: 15px;
   margin: 10px 0;
+}
+.tester-create-main-info hr {
+  margin: 0;
 }
 .tester-create-main-info input, .tester-create-main-info textarea {
   border-radius: 5px;
+  margin-bottom: 5px;
   width: 100%;
   padding: 0 5px;
   border: 1px solid #dcdde1;
@@ -11875,8 +11907,14 @@ textarea.form-control-lg {
 }
 
 .tester-create-new-test-btn {
-  margin-top: 10px;
+  margin-top: 5px;
   width: 100%;
+}
+
+.tester-create-main-info-warning {
+  margin: 0;
+  color: #ff4757;
+  font-size: 12px;
 }
 
 .todo-app {

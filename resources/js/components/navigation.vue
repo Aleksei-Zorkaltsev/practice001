@@ -3,7 +3,7 @@
     <div class="app-main-navigation">
         <nav class="app-top-nav">
             <ul>
-                <li v-for="link in topNavRoutes">
+                <li v-for="link in navRoutes">
                     <router-link
                         :to="link.to"
                         :key="link.to"
@@ -23,7 +23,7 @@ export default {
 
     data(){
         return {
-            topNavRoutes: [
+            navRoutes: [
                 {
                     to: '/',
                     title: 'Главная'

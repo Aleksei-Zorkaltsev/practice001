@@ -20,7 +20,7 @@
                         </div>
                         <button :disabled="!get_user_answer || get_time_off"
                             class="tester-apply-answer-btn"
-                            @click.prevent="applyAnswer"> Принять ответ </button>
+                            @click.prevent="applyAnswer">Принять ответ</button>
                     </div>
                 </div>
             </transition>
@@ -36,7 +36,7 @@
             </transition>
         </div>
         <div class="tester-test-info-block">
-            <div v-if="get_end">Тест закончен, вы ответили на все вопросы.
+            <div v-if="get_end">Тест закончен. <span v-if="get_time_off">Время вышло.</span>
                 <br> Ваш результат:
                 <br> Правильных ответов: {{ get_counter_rights_answers }}
                 <br> Ошибки: {{ get_counter_mistakes }}
@@ -44,7 +44,6 @@
             <div v-else>
                 <div>
                     {{ get_timer_minutes }} : {{ get_timer_seconds }}
-                    <p v-if="get_show_time_off">Время вышло.</p>
                 </div>
                 <div>
                     Вопрос номер: 0
@@ -77,7 +76,6 @@ export default {
         'get_time_off',
         'get_timer_seconds',
         'get_timer_minutes',
-        'get_show_time_off',
     ]),
 
     methods: {

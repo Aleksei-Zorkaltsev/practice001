@@ -55,10 +55,11 @@ export default {
             ctx.commit('SET_TIMER_SECOND', (ctx.state.timer_seconds - 1))
 
             if(ctx.state.timer_minutes == '00' && ctx.state.timer_seconds === 0){
-                ctx.dispatch('stopTest');
-                ctx.commit('SET_SHOW_TIME_OFF', true)
+                ctx.dispatch('endTest');
+                ctx.commit('SET_TIME_OFF', true)
+
             }
-            if(ctx.state.timer_seconds === 0 && ctx.state.timer_minutes != 0) {
+            if(ctx.state.timer_seconds <= 0 && ctx.state.timer_minutes != 0) {
                 ctx.commit('SET_TIMER_SECOND', 59);
                 ctx.commit('SET_TIMER_MINUTE', (ctx.state.timer_minutes - 1));
             }
@@ -66,11 +67,6 @@ export default {
         }, 1000)
 
         ctx.commit('SET_TIMER', timer)
-    },
-
-    stopTest(ctx){
-        ctx.commit('DROP_TIMER')
-        ctx.commit('SET_TIME_OFF', true)
     },
 
     fixTimer(ctx){

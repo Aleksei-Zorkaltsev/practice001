@@ -319,7 +319,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "app-nav-component",
   data: function data() {
     return {
-      topNavRoutes: [{
+      navRoutes: [{
         to: '/',
         title: 'Главная'
       }, {
@@ -1683,6 +1683,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create_test",
   data: function data() {
@@ -1693,7 +1723,10 @@ __webpack_require__.r(__webpack_exports__);
         description: null,
         time: 60,
         questions: []
-      }
+      },
+      show_timer_tooltip: false,
+      show_title_tooltip: false,
+      warning_validation: false
     };
   },
   methods: {
@@ -1730,27 +1763,19 @@ __webpack_require__.r(__webpack_exports__);
     validation: function validation() {
       var _this = this;
 
-      var storage = JSON.parse(localStorage.getItem('tester_storage')); // простые проверки
-
-      if (this.new_test.title) {
-        if (this.new_test.title.length > 123 || this.new_test.title.length < 5) return false;
-        if (storage.tests.find(function (el) {
-          return el.title == _this.new_test.title;
-        })) return false;
-      } else {
-        return false;
-      }
-
+      // простая проверка.
+      var storage = JSON.parse(localStorage.getItem('tester_storage'));
+      if (!this.new_test.title || this.new_test.title.length > 127 || this.new_test.title.length < 5) return false;
+      if (storage.tests.find(function (el) {
+        return el.title == _this.new_test.title;
+      })) return false;
       if (!this.new_test.time || this.new_test.time < 60) return false;
-      if (this.new_test.questions.length < 3) return false;
-      if (this.new_test.questions.find(function (el) {
-        return !el.question;
-      })) return false;
-      if (this.new_test.questions.find(function (quest) {
-        return quest.answers.find(function (el) {
+      this.new_test.questions.forEach(function (quest) {
+        if (quest.answers.find(function (el) {
           return !el.value;
-        });
-      })) return false;
+        })) return false;
+      });
+      return true;
     },
     resetForm: function resetForm() {
       this.new_test = {
@@ -1763,13 +1788,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     createNewTest: function createNewTest() {
       if (this.validation()) {
+        this.warning_validation = false;
         var storage = JSON.parse(localStorage.getItem('tester_storage'));
         storage.counter_tests_id++;
         this.new_test.id = storage.counter_tests_id;
         storage.tests.push(this.new_test);
         localStorage.setItem('tester_storage', JSON.stringify(storage));
         this.resetForm();
+        this.$router.push('/tester');
+      } else {
+        this.warning_validation = true;
       }
+    }
+  },
+  mounted: function mounted() {
+    for (var i = 1; i <= 3; i++) {
+      this.create_addNewQuestion();
     }
   }
 });
@@ -1976,11 +2010,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "main_test",
-  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('tester', ['get_SelectedTest', 'get_user_answer', 'get_counter_rights_answers', 'get_counter_mistakes', 'get_currentQuestion', 'get_questions', 'get_end', 'get_time_off', 'get_timer_seconds', 'get_timer_minutes', 'get_show_time_off']),
+  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('tester', ['get_SelectedTest', 'get_user_answer', 'get_counter_rights_answers', 'get_counter_mistakes', 'get_currentQuestion', 'get_questions', 'get_end', 'get_time_off', 'get_timer_seconds', 'get_timer_minutes']),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('tester', ['initTest', 'startTest', 'applyAnswer', 'resetTest', 'setUserAnswer'])), {}, {
     backToMain: function backToMain() {
       this.$router.push('/tester');
@@ -4636,11 +4669,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ctx.commit('SET_TIMER_SECOND', ctx.state.timer_seconds - 1);
 
       if (ctx.state.timer_minutes == '00' && ctx.state.timer_seconds === 0) {
-        ctx.dispatch('stopTest');
-        ctx.commit('SET_SHOW_TIME_OFF', true);
+        ctx.dispatch('endTest');
+        ctx.commit('SET_TIME_OFF', true);
       }
 
-      if (ctx.state.timer_seconds === 0 && ctx.state.timer_minutes != 0) {
+      if (ctx.state.timer_seconds <= 0 && ctx.state.timer_minutes != 0) {
         ctx.commit('SET_TIMER_SECOND', 59);
         ctx.commit('SET_TIMER_MINUTE', ctx.state.timer_minutes - 1);
       }
@@ -4648,10 +4681,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ctx.dispatch('fixTimer');
     }, 1000);
     ctx.commit('SET_TIMER', timer);
-  },
-  stopTest: function stopTest(ctx) {
-    ctx.commit('DROP_TIMER');
-    ctx.commit('SET_TIME_OFF', true);
   },
   fixTimer: function fixTimer(ctx) {
     if (ctx.state.timer_minutes < 10) {
@@ -4899,8 +4928,7 @@ __webpack_require__.r(__webpack_exports__);
   timer: null,
   timer_seconds: null,
   timer_minutes: null,
-  countQuestion: 0,
-  show_time_off: false
+  countQuestion: 0
 });
 
 /***/ }),
@@ -9528,7 +9556,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "contacts" }, [
       _c("p", [
         _vm._v("\n        Вы можете со мной в "),
-        _c("a", { attrs: { href: "vk/a.zorkalcev" } }, [_vm._v("vkontakte")]),
+        _c("a", { attrs: { href: "https://vk.com/a.zorkalcev" } }, [
+          _vm._v("vkontakte"),
+        ]),
         _c("br"),
         _vm._v("\n        По телефону: +7 982 185 30 35 "),
         _c("br"),
@@ -9667,26 +9697,26 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "homepage" }, [
-      _c("div", { staticClass: "home-left" }, [
+  return _c("div", { staticClass: "homepage" }, [
+    _c(
+      "div",
+      { staticClass: "home-left" },
+      [
         _c("h3", [_vm._v("Привет, меня зовут Алексей")]),
         _vm._v(" "),
         _c("p", [_vm._v("я junior front-end разработчик.")]),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" } }, [_vm._v(" > Мои проекты")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-right" }),
-    ])
-  },
-]
+        _c("router-link", { attrs: { to: "/projects" } }, [
+          _vm._v(" Мои проекты "),
+        ]),
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "home-right" }),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -9713,7 +9743,7 @@ var render = function () {
     _c("nav", { staticClass: "app-top-nav" }, [
       _c(
         "ul",
-        _vm._l(_vm.topNavRoutes, function (link) {
+        _vm._l(_vm.navRoutes, function (link) {
           return _c(
             "li",
             [
@@ -11225,6 +11255,27 @@ var render = function () {
               }),
               0
             ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: questionObj.right_answer,
+                  expression: "questionObj.right_answer",
+                },
+              ],
+              attrs: { placeholder: "Развернутый ответ..." },
+              domProps: { value: questionObj.right_answer },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(questionObj, "right_answer", $event.target.value)
+                },
+              },
+            }),
           ])
         }),
         _vm._v(" "),
@@ -11246,79 +11297,152 @@ var render = function () {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "tester-create-main-info" }, [
-      _c("h5", [_vm._v("Название теста:")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
+      _c("div", [
+        _c("i", {
+          staticClass: "fa-solid fa-circle-question",
+          on: {
+            mouseover: function ($event) {
+              _vm.show_title_tooltip = true
+            },
+            mouseout: function ($event) {
+              _vm.show_title_tooltip = false
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "span",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.new_test.title,
-            expression: "new_test.title",
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show_title_tooltip,
+                expression: "show_title_tooltip",
+              },
+            ],
+            staticClass: "tester-create-tooltip-title",
           },
-        ],
-        attrs: { type: "text" },
-        domProps: { value: _vm.new_test.title },
-        on: {
-          input: function ($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.new_test, "title", $event.target.value)
+          [
+            _vm._v(
+              "\n                    Название должно содержать не менее 5 и не более 127 символов.\n                "
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("h3", [_vm._v("* Название теста:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_test.title,
+              expression: "new_test.title",
+            },
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.new_test.title },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.new_test, "title", $event.target.value)
+            },
           },
-        },
-      }),
+        }),
+        _vm._v(" "),
+        _c("hr"),
+      ]),
       _vm._v(" "),
-      _c("hr"),
+      _c("div", [
+        _c("h3", [_vm._v("Описание:")]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_test.description,
+              expression: "new_test.description",
+            },
+          ],
+          domProps: { value: _vm.new_test.description },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.new_test, "description", $event.target.value)
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c("hr"),
+      ]),
       _vm._v(" "),
-      _c("h5", [_vm._v("Описание:")]),
-      _vm._v(" "),
-      _c("textarea", {
-        directives: [
+      _c("div", [
+        _c("i", {
+          staticClass: "fa-solid fa-circle-question",
+          on: {
+            mouseover: function ($event) {
+              _vm.show_timer_tooltip = true
+            },
+            mouseout: function ($event) {
+              _vm.show_timer_tooltip = false
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "span",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.new_test.description,
-            expression: "new_test.description",
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show_timer_tooltip,
+                expression: "show_timer_tooltip",
+              },
+            ],
           },
-        ],
-        domProps: { value: _vm.new_test.description },
-        on: {
-          input: function ($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.new_test, "description", $event.target.value)
+          [_vm._v("Время указано в секундах.")]
+        ),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Время на выполнение:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_test.time,
+              expression: "new_test.time",
+            },
+          ],
+          attrs: { type: "number", min: "60" },
+          domProps: { value: _vm.new_test.time },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.new_test, "time", $event.target.value)
+            },
           },
-        },
-      }),
+        }),
+        _vm._v(" "),
+        _c("hr"),
+      ]),
       _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Время на выполнение:")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.new_test.time,
-            expression: "new_test.time",
-          },
-        ],
-        attrs: { type: "number" },
-        domProps: { value: _vm.new_test.time },
-        on: {
-          input: function ($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.new_test, "time", $event.target.value)
-          },
-        },
-      }),
-      _vm._v(" "),
-      _c("span", [_vm._v("*Секунды")]),
+      _vm.warning_validation
+        ? _c("p", { staticClass: "tester-create-main-info-warning" }, [
+            _vm._v(
+              "\n            ошибка. проверьте все ли поля со звездочкой заполнены. проверьте вопросы и варианты ответа.\n        "
+            ),
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "button",
@@ -11592,7 +11716,7 @@ var render = function () {
                           },
                         },
                       },
-                      [_vm._v(" Принять ответ ")]
+                      [_vm._v("Принять ответ")]
                     ),
                   ],
                   2
@@ -11633,7 +11757,9 @@ var render = function () {
     _c("div", { staticClass: "tester-test-info-block" }, [
       _vm.get_end
         ? _c("div", [
-            _vm._v("Тест закончен, вы ответили на все вопросы.\n            "),
+            _vm._v("Тест закончен. "),
+            _vm.get_time_off ? _c("span", [_vm._v("Время вышло.")]) : _vm._e(),
+            _vm._v(" "),
             _c("br"),
             _vm._v(" Ваш результат:\n            "),
             _c("br"),
@@ -11654,11 +11780,8 @@ var render = function () {
                   _vm._s(_vm.get_timer_minutes) +
                   " : " +
                   _vm._s(_vm.get_timer_seconds) +
-                  "\n                "
+                  "\n            "
               ),
-              _vm.get_show_time_off
-                ? _c("p", [_vm._v("Время вышло.")])
-                : _vm._e(),
             ]),
             _vm._v(" "),
             _c("div", [

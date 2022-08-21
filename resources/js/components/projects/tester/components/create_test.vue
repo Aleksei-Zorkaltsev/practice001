@@ -8,6 +8,7 @@
                 <h4>Вопрос: {{ index + 1 }}</h4>
                 <hr>
                 <textarea placeholder="Введите вопрос..." v-model="questionObj.question"></textarea>
+
                 <div class="tester-create-test-answers-block">
                     <div v-for="option in questionObj.answers" class="tester-answer-option" >
                         <i @click="set_QuestionRightAnswer( questionObj , option )" class="fa-regular fa-circle"></i>
@@ -15,20 +16,49 @@
                         <input v-model="option.value" type="text" placeholder="введите вариант ответа">
                     </div>
                 </div>
+
+                <textarea placeholder="Развернутый ответ..." v-model="questionObj.right_answer"></textarea>
             </div>
 
             <button @click.prevent="create_addNewQuestion" class="tester-create-question-btn">добавить вопрос</button>
         </div>
 
         <div class="tester-create-main-info">
-            <h5>Название теста:</h5>
-            <input v-model="new_test.title" type="text">
-            <hr>
-            <h5>Описание:</h5>
-            <textarea v-model="new_test.description"></textarea>
-            <hr>
-            <h5>Время на выполнение:</h5>
-            <input v-model="new_test.time" type="number"> <span>*Секунды</span>
+            <div>
+                <i @mouseover="show_title_tooltip = true"
+                   @mouseout="show_title_tooltip = false"
+                   class="fa-solid fa-circle-question"></i>
+
+                    <span class="tester-create-tooltip-title" v-show="show_title_tooltip">
+                        Название должно содержать не менее 5 и не более 127 символов.
+                    </span>
+
+                <h3>* Название теста:</h3>
+                <input v-model="new_test.title" type="text">
+                <hr>
+            </div>
+
+            <div>
+                <h3>Описание:</h3>
+                <textarea v-model="new_test.description"></textarea>
+                <hr>
+            </div>
+
+            <div>
+                <i @mouseover="show_timer_tooltip = true"
+                   @mouseout="show_timer_tooltip = false"
+                   class="fa-solid fa-circle-question"></i>
+
+                <span v-show="show_timer_tooltip">Время указано в секундах.</span>
+
+                <h3>Время на выполнение:</h3>
+                <input v-model="new_test.time" type="number" min="60">
+                <hr>
+            </div>
+
+            <p class="tester-create-main-info-warning" v-if="warning_validation">
+                ошибка. проверьте все ли поля со звездочкой заполнены. проверьте вопросы и варианты ответа.
+            </p>
             <button @click.prevent="createNewTest" class="tester-create-new-test-btn"> createNewTest </button>
         </div>
 
@@ -39,7 +69,7 @@
 export default {
     name: "create_test",
 
-    data(){ return {
+    data() { return {
         new_test: {
             id: null,
             title:  null,
@@ -47,6 +77,10 @@ export default {
             time: 60,
             questions: [],
         },
+        show_timer_tooltip: false,
+        show_title_tooltip: false,
+
+        warning_validation: false,
     }},
 
     methods: {
@@ -87,19 +121,17 @@ export default {
         },
 
         validation(){
+            // простая проверка.
             const storage = JSON.parse(localStorage.getItem('tester_storage'));
 
-            // простые проверки
-            if(this.new_test.title){
-                if(this.new_test.title.length > 123 || this.new_test.title.length < 5) return false;
-                if(storage.tests.find(el => el.title == this.new_test.title)) return false;
-            } else { return false }
-
+            if(!this.new_test.title || this.new_test.title.length > 127 || this.new_test.title.length < 5) return false;
+            if(storage.tests.find(el => el.title == this.new_test.title)) return false;
             if(!this.new_test.time || this.new_test.time < 60) return false;
+            this.new_test.questions.forEach(quest => {
+                if(quest.answers.find(el => !el.value)) return false;
+            })
 
-            if(this.new_test.questions.length < 3) return false;
-            if(this.new_test.questions.find(el => !el.question)) return false;
-            if(this.new_test.questions.find(quest => quest.answers.find(el => !el.value))) return false;
+            return true;
         },
 
         resetForm(){
@@ -114,7 +146,7 @@ export default {
 
         createNewTest(){
             if(this.validation()){
-
+                this.warning_validation = false;
                 const storage = JSON.parse(localStorage.getItem('tester_storage'));
 
                 storage.counter_tests_id++;
@@ -122,9 +154,18 @@ export default {
                 storage.tests.push(this.new_test)
 
                 localStorage.setItem('tester_storage', JSON.stringify(storage))
-
                 this.resetForm()
+
+                this.$router.push('/tester');
+            } else {
+                this.warning_validation = true;
             }
+        }
+    },
+
+    mounted(){
+        for(let i = 1; i <= 3; i++){
+            this.create_addNewQuestion()
         }
     }
 }
