@@ -98,6 +98,7 @@ export default {
         lightTheme(ctx){
             ctx.commit('SET_DARK', false);
         },
+
         darkTheme(ctx){
             ctx.commit('SET_DARK', true);
         },

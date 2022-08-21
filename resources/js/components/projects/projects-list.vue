@@ -1,45 +1,9 @@
 <template>
     <div class="projects-list">
-        <router-link to="/todo">
+        <router-link v-for="project in projects_links" :to="project.link">
             <div class="projects-list-item">
-                <i class="fas fa-clipboard-check"></i>
-                <p>TODO APP</p>
-            </div>
-        </router-link>
-        <router-link to="/stopwatch">
-            <div class="projects-list-item">
-                <i class="fa-solid fa-clock"></i>
-                <p>Секундомер</p>
-            </div>
-        </router-link>
-        <router-link to="/kb_trainer">
-            <div class="projects-list-item">
-                <i class="fas fa-keyboard"></i>
-                <p>Тренажер для печати</p>
-            </div>
-        </router-link>
-        <router-link to="/pass_generator">
-            <div class="projects-list-item">
-                <i class="fas fa-key"></i>
-                <p>Генератор паролей</p>
-            </div>
-        </router-link>
-        <router-link to="/memory_game">
-            <div class="projects-list-item">
-                <i class="fas fa-trophy"></i>
-                <p>Memory Game</p>
-            </div>
-        </router-link>
-        <router-link to="/tester">
-            <div class="projects-list-item">
-                <i class="fas fa-question-circle"></i>
-                <p>Тесты</p>
-            </div>
-        </router-link>
-        <router-link to="/snake">
-            <div class="projects-list-item">
-                <i class="fa-solid fa-staff-snake"></i>
-                <p> Змейка. Vanilla Js ES6 </p>
+                <i :class="project.font_awesome_icon"></i>
+                <p>{{ project.title }}</p>
             </div>
         </router-link>
     </div>
@@ -48,6 +12,48 @@
 <script>
 export default {
     name: "projects-list",
+
+    data(){
+        return{
+            projects_links: [
+                {
+                    title: 'TODO APP',
+                    font_awesome_icon: 'fas fa-clipboard-check',
+                    link: '/todo'
+                },
+                {
+                    title: 'Секундомер',
+                    font_awesome_icon: 'fa-solid fa-clock',
+                    link: '/stopwatch'
+                },
+                {
+                    title: 'Тренажер для печати',
+                    font_awesome_icon: 'fas fa-keyboard',
+                    link: '/kb_trainer'
+                },
+                {
+                    title: 'Генератор паролей',
+                    font_awesome_icon: 'fas fa-key',
+                    link: '/pass_generator'
+                },
+                {
+                    title: 'Memory Game',
+                    font_awesome_icon: 'fas fa-trophy',
+                    link: '/memory_game'
+                },
+                {
+                    title: 'Тесты',
+                    font_awesome_icon: 'fas fa-question-circle',
+                    link: '/tester'
+                },
+                {
+                    title: 'Змейка. Vanilla Js ES6',
+                    font_awesome_icon: 'fa-solid fa-staff-snake',
+                    link: '/snake'
+                },
+            ]
+        }
+    }
 }
 </script>
 

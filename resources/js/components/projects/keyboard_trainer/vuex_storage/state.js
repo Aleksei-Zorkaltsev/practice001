@@ -17,10 +17,12 @@ export default {
         show: null,
         score: null
     },
+
     timer: {
         minute: 0,
         seconds: 0
     },
+
     positions: {
         p1: null,
         p2: null,

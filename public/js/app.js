@@ -40,6 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _about_me_slides_templates__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./about_me_slides_templates */ "./resources/js/components/about_me_slides_templates.js");
 //
 //
 //
@@ -66,39 +67,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "about-me-components",
   data: function data() {
     return {
-      currentSlide: 1,
-      lastSlides: 2,
-      swapSide: 'swap-left'
+      currentSlide: null,
+      lastSlides: null,
+      swapSide: 'swap-left',
+      slides: _about_me_slides_templates__WEBPACK_IMPORTED_MODULE_0__["default"]
     };
   },
   methods: {
+    initSlider: function initSlider() {
+      this.currentSlide = 1;
+      this.lastSlides = this.slides.length;
+    },
     swapLeft: function swapLeft() {
       this.swapSide = 'swap-left';
       this.currentSlide++;
@@ -110,7 +94,9 @@ __webpack_require__.r(__webpack_exports__);
       if (this.currentSlide < 0) this.currentSlide = 1;
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.initSlider();
+  }
 });
 
 /***/ }),
@@ -331,18 +317,8 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         to: '/contacts',
         title: 'Контакты'
-      }],
-      currentRoute: null
+      }]
     };
-  },
-  methods: {
-    checkRoute: function checkRoute(link) {
-      if (this.currentRoute === link) return true;
-      return false;
-    }
-  },
-  beforeMount: function beforeMount() {
-    this.currentRoute = this.$router.currentRoute.path;
   }
 });
 
@@ -677,7 +653,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "kbt-welcome",
@@ -705,15 +680,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "projects-component",
-  data: function data() {
-    return {
-      loader: 'storage/app/public/images/loader.gif'
-    };
-  },
   components: {
     'projects-list': _projects_list__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -1187,44 +1156,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "projects-list"
+  name: "projects-list",
+  data: function data() {
+    return {
+      projects_links: [{
+        title: 'TODO APP',
+        font_awesome_icon: 'fas fa-clipboard-check',
+        link: '/todo'
+      }, {
+        title: 'Секундомер',
+        font_awesome_icon: 'fa-solid fa-clock',
+        link: '/stopwatch'
+      }, {
+        title: 'Тренажер для печати',
+        font_awesome_icon: 'fas fa-keyboard',
+        link: '/kb_trainer'
+      }, {
+        title: 'Генератор паролей',
+        font_awesome_icon: 'fas fa-key',
+        link: '/pass_generator'
+      }, {
+        title: 'Memory Game',
+        font_awesome_icon: 'fas fa-trophy',
+        link: '/memory_game'
+      }, {
+        title: 'Тесты',
+        font_awesome_icon: 'fas fa-question-circle',
+        link: '/tester'
+      }, {
+        title: 'Змейка. Vanilla Js ES6',
+        font_awesome_icon: 'fa-solid fa-staff-snake',
+        link: '/snake'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -3254,6 +3220,27 @@ var app = new Vue({
 
 /***/ }),
 
+/***/ "./resources/js/components/about_me_slides_templates.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/about_me_slides_templates.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  id: 1,
+  template: "<h2>\u041E\u0411\u041E \u041C\u041D\u0415</h2>\n                   <p> \u041F\u0440\u0438\u0432\u0435\u0442, \u043C\u0435\u043D\u044F \u0437\u043E\u0432\u0443\u0442 \u0410\u043B\u0435\u043A\u0441\u0435\u0439, \u043C\u043D\u0435 30 \u043B\u0435\u0442. \u0415\u0441\u043B\u0438 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u043E \u0441\u0435\u0431\u0435, \u044F \u043D\u0435 \u043C\u043E\u0433\u0443 \u043D\u0435 \u043D\u0430\u0447\u0430\u0442\u044C \u0441 \u0442\u043E\u0433\u043E,\n                       \u0447\u0442\u043E \u0432 20 \u043B\u0435\u0442 \u044F \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u043F\u0435\u0440\u0435\u043B\u043E\u043C \u0448\u0435\u0439\u043D\u044B\u0445 \u043F\u043E\u0437\u0432\u043E\u043D\u043A\u043E\u0432, \u0438 \u0441 \u0442\u0435\u0445 \u043F\u043E\u0440 \u044F \u0432 \u0438\u043D\u0432\u0430\u043B\u0438\u0434\u043D\u043E\u043C \u043A\u0440\u0435\u0441\u043B\u0435. \u0420\u0435\u0430\u0431\u0438\u043B\u0438\u0442\u0430\u0446\u0438\u044F \u043F\u0440\u043E\u0445\u043E\u0434\u0438\u043B\u0430\n                       \u0441\u043B\u043E\u0436\u043D\u043E \u0438 \u0434\u043E\u043B\u0433\u043E. \u041F\u0440\u043E\u0448\u043B\u043E \u043C\u043D\u043E\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043F\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043C \u044F \u0441\u043C\u043E\u0433 \"\u0431\u043E\u043B\u0435\u0435 \u043C\u0435\u043D\u0435\u0435\" \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E\u0439 \u0436\u0438\u0437\u043D\u0438.\n                       \u041D\u0435\u0441\u043C\u043E\u0442\u0440\u044F \u043D\u0430 \u0442\u043E, \u0447\u0442\u043E \u044F \u0432\u0441\u0435 \u0435\u0449\u0435 \u043D\u0435 \u043C\u043E\u0433\u0443 \u0445\u043E\u0434\u0438\u0442\u044C \u0438 \u0441\u0430\u043C\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u043E \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u044C \u0438\u0437 \u0434\u043E\u043C\u0430,\n                       \u044F \u043D\u0435 \u043E\u043F\u0443\u0441\u043A\u0430\u044E \u0440\u0443\u043A\u0438.</p>\n                   <p> \u0411\u0435\u0437\u0434\u0435\u043B\u044C\u0435 \u043C\u0435\u043D\u044F \u0443\u0431\u0438\u0432\u0430\u043B\u043E, \u0438 \u044F \u043D\u0430\u0447\u0430\u043B \u0438\u0441\u043A\u0430\u0442\u044C \u0442\u043E, \u0447\u0435\u043C\u0443 \u0441\u043C\u043E\u0433\u0443 \u0441\u0435\u0431\u044F \u043F\u043E\u0441\u0432\u044F\u0442\u0438\u0442\u044C \u0434\u0430\u0436\u0435 \u043D\u0430\u0445\u043E\u0434\u044F\u0441\u044C \u0432 \u0442\u0430\u043A\u043E\u043C \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0438.\n                       \u042F \u0432\u0441\u044E \u0441\u0432\u043E\u044E \u0436\u0438\u0437\u043D\u044C \u043B\u044E\u0431\u0438\u043B \u0432\u0441\u0435, \u0447\u0442\u043E \u043A\u0430\u0441\u0430\u0435\u0442\u0441\u044F \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u043E\u0432, \u0438\u0433\u0440, \u0438 \u043C\u043D\u0435 \u0432\u0441\u0435\u0433\u0434\u0430 \u0431\u044B\u043B\u043E \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E \u043D\u0430\u0431\u043B\u044E\u0434\u0430\u0442\u044C \u0437\u0430\n                       \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435\u043C \u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u0439. \u041C\u0435\u043D\u044F \u043F\u0440\u0435\u0432\u043B\u0435\u043A\u0430\u043B\u0430 \u0438\u0434\u0435\u044F \u0438\u043D\u0442\u0440\u0435\u0440\u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438 \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430 \u0441 \"\u0436\u0435\u043B\u0435\u0437\u043E\u043C\".\n                       \u041F\u043E \u043A\u0430\u043A\u043E\u0439-\u0442\u043E \u043F\u0440\u0438\u0447\u0438\u043D\u0435, \u044F \u0434\u0443\u043C\u0430\u043B, \u0447\u0442\u043E \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 - \u044D\u0442\u043E \u0434\u043B\u044F \u0438\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0445, \u0434\u0443\u043C\u0430\u043B,\n                       \u0447\u0442\u043E \u043E\u043D\u043E \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0441\u043B\u043E\u0436\u043D\u043E\u0435, \u0447\u0442\u043E\u0431\u044B \u0443\u0436\u0435 \u043F\u044B\u0442\u0430\u0442\u044C\u0441\u044F. \u0417\u0430\u0431\u043B\u0443\u0436\u0434\u0430\u043B\u0441\u044F, \u0447\u0442\u043E \u0434\u043B\u044F \u044D\u0442\u043E\u0433\u043E \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E\n                       \u043E\u043A\u043E\u043D\u0447\u0438\u0442\u044C \u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 \u0438 \u0442.\u0434.</p>\n                   <p> \u0412 \u043A\u0430\u043A\u043E\u0439-\u0442\u043E \u043C\u043E\u043C\u0435\u043D\u0442 \u044F \u0440\u0435\u0448\u0438\u043B, \u0447\u0442\u043E \u044F \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043F\u043E\u0442\u0435\u0440\u044F\u044E, \u0435\u0441\u043B\u0438 \u043F\u043E\u043F\u044B\u0442\u0430\u044E\u0441\u044C. \u0412\u0435\u0440\u043E\u044F\u0442\u043D\u043E, \u044D\u0442\u043E \u0431\u044B\u043B\u043E \u043B\u0443\u0447\u0448\u0435\u0435 \u0440\u0435\u0448\u0435\u043D\u0438\u0435 \u0432 \u043C\u043E\u0435\u0439 \u0436\u0438\u0437\u043D\u0438.\n                       \u0421 \u0442\u0435\u0445 \u043F\u043E\u0440 \u044F \u0445\u043E\u0447\u0443 \u0441\u0432\u044F\u0437\u0430\u0442\u044C \u0441\u0432\u043E\u044E \u0436\u0438\u0437\u043D\u044C \u0441 IT,\n                       \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0442\u044C\u0441\u044F, \u043D\u0430\u0439\u0442\u0438 \u0441\u0435\u0431\u044F \u0438 \"<span>\u0432\u0441\u0442\u0430\u0442\u044C \u043D\u0430 \u043D\u043E\u0433\u0438</span>\" \u043D\u0435 \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u0430\u043B\u044C\u043D\u043E.</p>"
+}, {
+  id: 2,
+  template: "<h2>\u0422\u0415\u0425\u041D\u0418\u0427\u0415\u0421\u041A\u0418\u0415 \u0417\u041D\u0410\u041D\u0418\u042F</h2>\n                   <p>\u041E\u043F\u044B\u0442 \u0441 \u0444\u0440\u0435\u0439\u043C\u0432\u043E\u0440\u043A\u043E\u043C Vue.js</p>\n                   <p>/ \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C Vuex.</p>\n                   <p>\u0417\u043D\u0430\u043D\u0438\u0435 \u043D\u0430\u0442\u0438\u0432\u043D\u043E\u0433\u043E JavaScript ES6</p>\n                   <p>\u0417\u043D\u0430\u043D\u0438\u0435 HTML/HTML5</p>\n                   <p>\u0417\u043D\u0430\u043D\u0438\u0435 CSS/CSS3</p>\n                   <p>\u0420\u0430\u0431\u043E\u0442\u0430 \u0441 \u043F\u0440\u0435\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0430\u043C\u0438 SASS</p>\n                   <p>\u041D\u0435 \u0431\u043E\u043B\u044C\u0448\u043E\u0439 \u043E\u043F\u044B\u0442 \u0430\u0434\u0430\u043F\u0442\u0438\u0432\u043D\u043E\u0439 \u0432\u0451\u0440\u0441\u0442\u043A\u0438</p>\n                   <p>\u0417\u043D\u0430\u043D\u0438\u0435 GIT (\u043A\u043B\u0438\u0435\u043D\u0442\u0441\u043A\u0438\u0439)</p>\n                   <p>\u041D\u0435\u0431\u043E\u043B\u044C\u0448\u043E\u0439 \u043E\u043F\u044B\u0442 \u0441 PHP7 Laravel.</p>"
+}]);
+
+/***/ }),
+
 /***/ "./resources/js/components/projects/keyboard_trainer/src/lib_kbt_eng.js":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/projects/keyboard_trainer/src/lib_kbt_eng.js ***!
@@ -3281,21 +3268,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (['привет', 'здравствуй', 'спасибо', 'клавиатура', 'клавиша', 'телефон', 'микрофон', 'освежитель', 'камера', 'монитор', 'компьютер', 'вода', 'кофе', 'кредит', 'зубочистка', 'воздух', 'балон', 'топливо', 'тактика', 'технология', 'цирк', 'центр', 'серебро', 'свет', 'тьма', 'бурундук', 'животное', 'действие', 'шаблон', 'договор', 'сверло', 'целенаправленный', 'осведомленный', 'провокация', 'объект', 'блокада', 'терпеливость', 'магнетизм', 'астрофизика', 'правило', 'жизнь', 'хлопок', 'передозировка', 'длинношеее', 'профессионал', 'приложения', 'провод', 'астрофизика', 'оптимизация', 'календарь', 'здоровье', 'время', 'деньги', 'панель', 'контроль', 'цветы', 'сирень', 'красивый', 'локальный', 'прекрасный', 'позиционирование', 'отладка', 'мировозрение', 'настройка', 'трудолюбие', 'столпотворение', 'почтальон', 'велосипед', 'романтика', 'портфолио', 'термодинамика', 'теория', 'жадность', 'долгожданный', 'яблоко', 'существо', 'частный', 'погода', 'музыка', 'противостояние', 'церемония', 'город', 'керамика', 'относительный', 'электрон', 'реальность', 'новость']);
-
-/***/ }),
-
-/***/ "./resources/js/components/projects/keyboard_trainer/src/test_lib.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/projects/keyboard_trainer/src/test_lib.js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (['1', '2', '3', '4', '5', '6', '7', '8', '9']);
 
 /***/ }),
 
@@ -3431,13 +3403,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _velocity_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_velocity_animations */ "./resources/js/components/projects/keyboard_trainer/vuex_storage/_velocity_animations.js");
 /* harmony import */ var _src_lib_kbt_ru__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/lib_kbt_ru */ "./resources/js/components/projects/keyboard_trainer/src/lib_kbt_ru.js");
 /* harmony import */ var _src_lib_kbt_eng__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/lib_kbt_eng */ "./resources/js/components/projects/keyboard_trainer/src/lib_kbt_eng.js");
-/* harmony import */ var _src_test_lib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/test_lib */ "./resources/js/components/projects/keyboard_trainer/src/test_lib.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -3527,10 +3497,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       case 'eng':
         ctx.commit('SET_LANG_LIB', _src_lib_kbt_eng__WEBPACK_IMPORTED_MODULE_2__["default"]);
-        break;
-
-      case 'test':
-        ctx.commit('SET_LANG_LIB', _src_test_lib__WEBPACK_IMPORTED_MODULE_3__["default"]);
         break;
     }
 
@@ -3634,7 +3600,6 @@ __webpack_require__.r(__webpack_exports__);
     return state.result;
   },
   get_game: function get_game(state) {
-    console.log('state.game', state.game);
     return state.game;
   },
   get_countdownValue: function get_countdownValue(state) {
@@ -9423,45 +9388,25 @@ var render = function () {
             : _vm._e(),
         ]),
         _vm._v(" "),
-        _c("transition-group", { attrs: { name: _vm.swapSide } }, [
-          _vm.currentSlide === 1
-            ? _c("div", { key: "slide1", staticClass: "about-slider-slide" }, [
-                _c("div", { staticClass: "about-slider-content" }, [
-                  _c("h2", [_vm._v("ОБО МНЕ")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      ' Привет, меня зовут Алексей, мне 30 лет. Если говорить о себе, я не могу не начать рассказ с того,\n                        что в 20 лет я получил перелом шейных позвонков, и с тех пор я в инвалидном кресле. Реабилитация проходила\n                        сложно и долго. Прошло много времени прежде чем я смог "более менее" вернуться к нормальной жизни.\n                        Несмотря на то, что я все еще не могу ходить и самостоятельно выходить из дома,\n                        я не опускаю руки.'
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      ' Безделье меня убивало, и я начал искать то, чему смогу себя посвятить даже находясь в таком положении.\n                        Я всю свою жизнь любил все, что касается компьютеров, игр, и мне всегда было интересно наблюдать за\n                        развитием технологий. Меня превлекала идея интрерактивности человека с "железом". По какой-то причине, я думал, что программирование - это для избранных, думал,\n                        что оно слишком сложное, чтобы уже пытаться. Заблуждался, что для этого необходимо\n                        окончить университет и т.д.'
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      ' В какой-то момент я решил, что я ничего не потеряю, если попытаюсь. Вероятно, это было лучшее решение в моей жизни.\n                        С тех пор я хочу связать свою жизнь с IT,\n                        развиваться, найти себя и "'
-                    ),
-                    _c("span", [_vm._v("встать на ноги")]),
-                    _vm._v('" не только буквально.'),
-                  ]),
-                ]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.currentSlide === 2
-            ? _c("div", { key: "slide2", staticClass: "about-slider-slide" }, [
-                _c("div", { staticClass: "about-slider-content" }, [
-                  _c("h2", [_vm._v("ТЕХНИЧЕСКИЕ ЗНАНИЯ")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("test text")]),
-                ]),
-              ])
-            : _vm._e(),
-        ]),
+        _c(
+          "transition-group",
+          { attrs: { name: _vm.swapSide } },
+          _vm._l(_vm.slides, function (slide) {
+            return _vm.currentSlide === slide.id
+              ? _c(
+                  "div",
+                  { key: slide.id, staticClass: "about-slider-slide" },
+                  [
+                    _c("div", {
+                      staticClass: "about-slider-content",
+                      domProps: { innerHTML: _vm._s(slide.template) },
+                    }),
+                  ]
+                )
+              : _vm._e()
+          }),
+          0
+        ),
         _vm._v(" "),
         _c("transition", { attrs: { name: "fade" } }, [
           _vm.currentSlide !== _vm.lastSlides
@@ -9713,10 +9658,19 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "home-right" }),
+    _vm._m(0),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "home-right" }, [
+      _c("h3", [_vm._v(" ... ")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -10180,19 +10134,6 @@ var render = function () {
           on: {
             click: function ($event) {
               $event.preventDefault()
-              return _vm.selectLang("test")
-            },
-          },
-        },
-        [_vm._v("test")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              $event.preventDefault()
               return _vm.selectLang("ru")
             },
           },
@@ -10577,63 +10518,15 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "projects-list" },
-    [
-      _c("router-link", { attrs: { to: "/todo" } }, [
+    _vm._l(_vm.projects_links, function (project) {
+      return _c("router-link", { attrs: { to: project.link } }, [
         _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fas fa-clipboard-check" }),
+          _c("i", { class: project.font_awesome_icon }),
           _vm._v(" "),
-          _c("p", [_vm._v("TODO APP")]),
+          _c("p", [_vm._v(_vm._s(project.title))]),
         ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/stopwatch" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fa-solid fa-clock" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Секундомер")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/kb_trainer" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fas fa-keyboard" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Тренажер для печати")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/pass_generator" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fas fa-key" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Генератор паролей")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/memory_game" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fas fa-trophy" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Memory Game")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/tester" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fas fa-question-circle" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Тесты")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/snake" } }, [
-        _c("div", { staticClass: "projects-list-item" }, [
-          _c("i", { staticClass: "fa-solid fa-staff-snake" }),
-          _vm._v(" "),
-          _c("p", [_vm._v(" Змейка. Vanilla Js ES6 ")]),
-        ]),
-      ]),
-    ],
+      ])
+    }),
     1
   )
 }

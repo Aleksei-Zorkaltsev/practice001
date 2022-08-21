@@ -9,7 +9,6 @@ export default {
         return state.result;
     },
     get_game(state){
-        console.log('state.game', state.game)
         return state.game;
     },
     get_countdownValue(state){

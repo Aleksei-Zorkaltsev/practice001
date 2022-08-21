@@ -72,6 +72,7 @@ export default {
     },
 
     methods: {
+
         restart(){
             if( this.animations.animate_restart) return;
             this.animations.animate_restart  = true;
@@ -123,8 +124,6 @@ export default {
             }, {duration: 200})
             Velocity(field, {scale: '1.0'}, { delay: 200, duration: 300 }, "easeInSine")
         },
-
-
 
         checkField(current_position){
 
@@ -179,6 +178,7 @@ export default {
             return this.endgame;
         },
     },
+
     mounted(){
         this.positionsShuffle()
     }

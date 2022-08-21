@@ -38,7 +38,6 @@ export default {
 
 
     // transitions
-
     beforeEnter: function (el) {
         el.style.opacity = 0
     },

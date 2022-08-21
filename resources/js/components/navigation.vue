@@ -41,20 +41,8 @@ export default {
                     title: 'Контакты'
                 },
             ],
-            currentRoute: null,
         }
     },
-
-    methods: {
-        checkRoute(link){
-            if (this.currentRoute === link) return true;
-            return false;
-        }
-    },
-
-    beforeMount() {
-        this.currentRoute = this.$router.currentRoute.path;
-    }
 }
 </script>
 

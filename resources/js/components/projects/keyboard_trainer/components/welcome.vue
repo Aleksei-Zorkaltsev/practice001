@@ -3,7 +3,6 @@
         <h2>Тренажер для печати</h2>
         <div class="kbt-game-options">
             <p> Выберети язык: </p>
-            <button @click.prevent="selectLang('test')">test</button>
             <button @click.prevent="selectLang('ru')">Русский</button>
             <button @click.prevent="selectLang('eng')">Английский</button>
         </div>

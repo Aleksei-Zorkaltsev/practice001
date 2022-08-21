@@ -63,11 +63,7 @@ export default {
     ]),
 
     methods: {
-        ...mapActions("kbt", [
-                "startGame",
-                "stopGame"
-            ]
-        ),
+        ...mapActions("kbt", [ "startGame", "stopGame"] ),
 
         beforeEnter: function (el) {
             el.style.opacity = 0

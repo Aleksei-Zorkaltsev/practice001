@@ -6,7 +6,7 @@
             <router-link to="/projects"> Мои проекты </router-link>
         </div>
         <div class="home-right">
-
+            <h3> ... </h3>
         </div>
     </div>
 </template>

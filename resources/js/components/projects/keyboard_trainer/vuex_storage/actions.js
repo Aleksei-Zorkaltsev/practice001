@@ -1,7 +1,6 @@
 import kbtAnimations from "./_velocity_animations";
 import Lib_ru from "../src/lib_kbt_ru";
 import Lib_eng from "../src/lib_kbt_eng";
-import Lib_test from "../src/test_lib";
 
 export default {
     ...kbtAnimations,
@@ -86,7 +85,6 @@ export default {
                 index: index,
             })
         }
-
         ctx.commit('DELETE_ELEMENT_GAME_LIBRARY', index)
     },
 
@@ -101,11 +99,7 @@ export default {
             case 'eng':
                 ctx.commit('SET_LANG_LIB', Lib_eng)
                 break;
-            case 'test':
-                ctx.commit('SET_LANG_LIB', Lib_test)
-                break;
         }
-
 
         for(let i = 0; i < ctx.state.lang_lib.length; i++){
             ctx.commit('PUSH_IN_GAME_LIBRARY', {
